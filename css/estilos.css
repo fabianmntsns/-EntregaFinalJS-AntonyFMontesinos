@@ -1,0 +1,155 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+body {
+  background-color: #e7e5e5; }
+  body header h1 {
+    text-align: center;
+    color: white;
+    background-color: black;
+    font-size: 0.9rem;
+    margin: 0;
+    padding: 0.5rem; }
+  body header nav div {
+    display: inline-block; }
+    body header nav div .menuIndex {
+      width: 500px; }
+      body header nav div .menuIndex ul li {
+        display: inline-block;
+        list-style: none; }
+        body header nav div .menuIndex ul li .botonSeccion {
+          background-color: transparent;
+          border: none; }
+        body header nav div .menuIndex ul li .botonSeccion:active {
+          background-color: black;
+          color: white; }
+      body header nav div .menuIndex ul .botonCarrito {
+        color: black; }
+    body header nav div .formIndex {
+      margin-left: 25%;
+      width: 15rem; }
+      body header nav div .formIndex form input {
+        font-size: 0.9rem; }
+      body header nav div .formIndex form button {
+        font-size: 0.9rem; }
+        body header nav div .formIndex form button img {
+          width: 1.5rem;
+          height: 1.5rem; }
+  body .mainPpal h2 {
+    color: black;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 2rem 5% 2rem 5%; }
+  body .mainPpal .contenedorCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4rem;
+    margin-bottom: 20px;
+    margin-top: 1rem; }
+    body .mainPpal .contenedorCards .prod {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 250px;
+      box-shadow: 0px 0px 5px 0px black;
+      background-color: #2d4263;
+      border-radius: 20px;
+      color: white; }
+      body .mainPpal .contenedorCards .prod .imgProd {
+        height: 13rem;
+        width: 13rem;
+        margin: 1.5rem;
+        object-fit: cover;
+        border-radius: 20px 20px 0px 0px;
+        transition: transform 0.2s ease-in-out; }
+      body .mainPpal .contenedorCards .prod .imgProd:hover {
+        transform: scale(1.1); }
+      body .mainPpal .contenedorCards .prod .infoProd {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 15px; }
+        body .mainPpal .contenedorCards .prod .infoProd .tituloProd {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 1rem; }
+        body .mainPpal .contenedorCards .prod .infoProd .precio {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 1rem; }
+        body .mainPpal .contenedorCards .prod .infoProd .buyProd {
+          background-color: #c9d8eb;
+          width: 100px;
+          height: 35px;
+          border-radius: 10px;
+          border: none;
+          font-size: 17px;
+          font-weight: 300;
+          margin-bottom: 1rem;
+          cursor: pointer; }
+        body .mainPpal .contenedorCards .prod .infoProd .buyProd:hover {
+          background-color: #89909c; }
+
+.bodyCarrito {
+  background-color: whitesmoke; }
+  .bodyCarrito header h1 {
+    text-transform: uppercase; }
+  .bodyCarrito header nav {
+    background-color: silver; }
+    .bodyCarrito header nav div .menuIndex ul li {
+      margin-right: 6rem; }
+      .bodyCarrito header nav div .menuIndex ul li a {
+        text-decoration: none;
+        color: black; }
+      .bodyCarrito header nav div .menuIndex ul li .botonCarrito img {
+        width: 1.3rem;
+        height: 1.3rem; }
+
+.mainPpal .boxCarrito {
+  text-align: center; }
+  .mainPpal .boxCarrito .carritoVacio {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    animation: zoom 2s infinite alternate; }
+
+@keyframes zoom {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1.2); } }
+    .mainPpal .boxCarrito .carritoVacio img {
+      width: 15rem;
+      height: 15rem; }
+  .mainPpal .boxCarrito .disabled {
+    display: none; }
+
+.mainPpal .carritoProductos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: whitesmoke; }
+  .mainPpal .carritoProductos .carritoProducto {
+    background-color: #bdbddb;
+    width: 16rem;
+    height: 37rem; }
+    .mainPpal .carritoProductos .carritoProducto .imgCarrito {
+      margin-top: 1rem;
+      width: 15rem;
+      height: 15rem; }
+    .mainPpal .carritoProductos .carritoProducto .carritoProductoTitulo h3 {
+      font-size: 1.5rem; }
+
+.disabled {
+  display: none; }
+
+.carritoAcciones {
+  display: flex;
+  justify-content: center; }
+  .carritoAcciones div {
+    background-color: whitesmoke; }
+    .carritoAcciones div button {
+      padding: 0.5rem; }

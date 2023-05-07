@@ -1,0 +1,131 @@
+// estilo de home
+
+// estilos header
+body{
+    background-color: rgb(231, 229, 229);
+    header{
+        h1{
+            text-align: center;
+            color: white;
+            background-color: black;
+            font-size: 0.9rem;
+            margin: 0;
+            padding: 0.5rem;
+         }
+         nav{
+            div{
+                display: inline-block;
+                .menuIndex{
+                    width: 500px;
+                    ul{
+                        li{
+                            display: inline-block;
+                            list-style: none;
+                            .botonSeccion{
+                                background-color: transparent;
+                                border:none;
+                            }
+                            .botonSeccion:active{
+                                background-color: black;
+                                color: white;
+                            }
+                            
+                        }
+                        .botonCarrito{
+                            color: black;
+                        }
+                    }
+                }
+                .formIndex{
+                    margin-left: 25%;
+                    width: 15rem;
+                    form{
+                        input{
+                            font-size: 0.9rem;
+                        }
+                        button{
+                            font-size: 0.9rem;
+                            img{
+                                width: 1.5rem;
+                                height: 1.5rem;
+                            }
+                        }
+                    }
+                }
+            }   
+         }
+     }
+
+     // estilos main
+
+.mainPpal{
+    h2{
+        color: black;
+        text-align: center;
+        font-size: 1.5rem;
+        margin: 2rem 5% 2rem 5%;
+    }
+    .contenedorCards{  
+            display: flex;
+            flex-wrap:wrap;
+            justify-content: center;
+            gap:4rem;
+            margin-bottom: 20px;
+            margin-top: 1rem;
+            .prod{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 250px;
+                box-shadow: 0px 0px 5px 0px black;
+                background-color: #2d4263;
+                border-radius: 20px;
+                color: white;
+                
+
+            .imgProd{
+                height: 13rem;
+                width: 13rem;
+                margin: 1.5rem;
+                object-fit: cover;
+                border-radius: 20px 20px 0px 0px;
+                transition: transform 0.2s ease-in-out;
+            }
+            .imgProd:hover {
+                transform: scale(1.1);
+              }
+            .infoProd{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 15px;
+                .tituloProd{
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 1rem;
+
+                }
+                .precio{
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 1rem;
+                    }
+                    .buyProd{
+                    background-color: #c9d8eb;
+                    width: 100px;
+                    height: 35px;
+                    border-radius: 10px;
+                    border: none;
+                    font-size: 17px;
+                    font-weight: 300;
+                    margin-bottom: 1rem;
+                    cursor: pointer;
+                    }
+                    .buyProd:hover{
+                    background-color: #89909c;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+// extend para estilos en un bloque
+// por ejemplo las propiedades de un boton
+
+%botones {
+    border: 1px solid black;
+    background-color: tomato;
+}
+
+// la manera de aplicarlo es colocando en estilos.scss (que estemos trabajando) ya sea el principal o secundario es 
