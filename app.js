@@ -1,128 +1,11 @@
-// Productos de nuestro E Commerce en Array
+let productos = [];
 
-const productos = [
-    { 
-        id: "prod-hombre-01",
-        titulo: "Buzo",
-        imagen: "./img/RMHombre/Hombre01.jpg",
-        categoria: {
-            nombre: "Hombre",
-            id: "hombre"
-        },
-        precio: 29000
-    },
-    {
-        id: "prod-hombre-02",
-        titulo: "Remera Black & Gold",
-        imagen: "./img/RMHombre/Hombre02.jpg",
-        categoria: {
-            nombre: "Hombre",
-            id: "hombre"
-        },
-        precio: 25000
-    },
-    {
-        id: "prod-hombre-03",
-        titulo: "Buzo con Capucha",
-        imagen: "./img/RMHombre/Hombre03.jpg",
-        categoria: {
-            nombre: "Hombre",
-            id: "hombre"
-        },
-        precio: 23000
-    },
-    {
-        id: "prod-hombre-04",
-        titulo: "Chaqueta Capucha Hombre",
-        imagen: "./img/RMHombre/Hombre04.jpg",
-        categoria: {
-            nombre: "Hombre",
-            id: "hombre"
-        },
-        precio: 29000
-    },
-    { 
-        id: "prod-mujer-01",
-        titulo: "Buzo con Capucha Mujer",
-        imagen: "./img/RMMujer/Mujer01.jpg",
-        categoria: {
-            nombre: "Mujer",
-            id: "mujer"
-         },
-        precio: 29000
-    },
-    {
-        id: "prod-mujer-02",
-        titulo: "Buzo Mujer",
-        imagen: "./img/RMMujer/Mujer02.jpg",
-        categoria: {
-            nombre: "Mujer",
-            id: "mujer"
-        },
-        precio: 15000
-    },
-    {
-        id: "prod-mujer-03",
-        titulo: "Remera Rosa Mujer",
-        imagen: "./img/RMMujer/Mujer03.jpg",
-        categoria: {
-            nombre: "Mujer",
-            id: "mujer"
-        },
-        precio: 29000
-    },
-    {
-        id: "prod-mujer-04",
-        titulo: "Remera Azul Mujer",
-        imagen: "./img/RMMujer/Mujer04.jpg",
-        categoria: {
-            nombre: "Mujer",
-            id: "mujer"
-        },
-        precio: 29000
-    },
-    {
-        id: "prod-nino-01",
-        titulo: "Gorro Azul Kids",
-        imagen: "./img/RMNino/Nino01.jpg",
-        categoria: {
-            nombre: "Niños",
-            id: "nino"
-        },
-        precio: 29000
-    },
-    {
-        id: "prod-nino-02",
-        titulo: "Piluso Kids",
-        imagen: "./img/RMNino/Nino02.jpg",
-        categoria: {
-            nombre: "Niños",
-            id: "nino",
-        },
-        precio: 14000
-    },
-    {
-        id: "prod-nino-03",
-        titulo: "Remera blanca Kids",
-        imagen: "./img/RMNino/Nino03.jpg",
-        categoria: {
-            nombre: "Niños",
-            id: "nino"
-        },
-        precio: 29000
-    },
-    {
-        id: "prod-nino-04",
-        titulo: "Gorro Kids",
-        imagen: "./img/RMNino/Nino04.jpg",
-        categoria: {
-            nombre: "Niños",
-            id: "nino"
-        },
-        precio: 29000
-    },
-
-];
+fetch("./productos.json")
+    .then(response => response.json())
+    .then(data =>{
+        productos = data;
+        cargarProductos(productos)
+    })
 
 const contenedorProductos = document.querySelector("#contenedorCards");
 const botonesSeccion = document.querySelectorAll(".botonSeccion");
@@ -155,7 +38,6 @@ productosElegidos.forEach(producto => {
 actualizarEstadoBotones();
 }
 
-cargarProductos(productos);
 
 botonesSeccion.forEach(boton => {
     // creamos un evento click que nos permita seleccionar la categoria de productos que queremos ver  
@@ -188,8 +70,20 @@ function actualizarEstadoBotones() {
         btn.addEventListener("click", agregarProductoAlCarrito);
     });
 }
-//creamos un array donde se alojaran los productos que agreguemos mediante los btn
-const carritoDeCompras = [];
+
+let carritoDeCompras;
+
+let carritoDeComprasLS = localStorage.getItem("productos-en-el-carrito");
+
+if(carritoDeComprasLS){
+    carritoDeCompras = JSON.parse(carritoDeComprasLS);
+    // traemos la función de actCantProdCarrito para actualizar la el numero de productos que tenemos elegidos en la página ppal
+    actCantProdCarrito()
+} else {
+    carritoDeCompras = [];
+}
+
+
 // creamos la funcion
 function agregarProductoAlCarrito(e) {
     const idBtn = e.currentTarget.id;

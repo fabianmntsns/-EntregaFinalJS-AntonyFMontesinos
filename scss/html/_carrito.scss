@@ -59,25 +59,37 @@
         }
 
     }   .carritoProductos{
-        display: flex;
-        flex-wrap: wrap;
+        display: inline-block;
         justify-content: space-around;
-            background-color: whitesmoke;
             .carritoProducto{
-                background-color: rgb(189, 189, 219);
-                width: 16rem;
-                height: 37rem;
+                background-color: rgb(191, 191, 199);
+                width: 700px;
+                margin: 1rem;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                padding: 1rem;
+                border-radius: 1rem;
+
                 
                 .imgCarrito{
-                    margin-top: 1rem;
-                    width: 15rem;
-                    height: 15rem;
+                    width: 10rem;
+                    height: 10rem;
+                    border-radius: 20px;
                 }
                 .carritoProductoTitulo{
                         h3{
                             font-size: 1.5rem;
                         } 
                     
+                }
+                .carritoProductoEliminar{
+                    border: none;
+                    background: none;
+                    img{
+                        width: 2rem;
+                        height: 2rem;
+                    }
                 }
             }
         }
