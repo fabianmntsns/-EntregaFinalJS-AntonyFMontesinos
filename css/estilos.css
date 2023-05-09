@@ -26,7 +26,7 @@ body {
           background-color: black;
           color: white; }
       body header nav div .menuIndex ul .botonCarrito {
-        color: black; }
+        color: black #ff0000; }
     body header nav div .formIndex {
       margin-left: 25%;
       width: 15rem; }
@@ -157,8 +157,20 @@ body {
 
 .carritoAcciones {
   display: flex;
-  justify-content: center; }
-  .carritoAcciones div {
-    background-color: whitesmoke; }
-    .carritoAcciones div button {
-      padding: 0.5rem; }
+  justify-content: center;
+  column-gap: 2rem; }
+  .carritoAcciones .vaciarCarrito {
+    background-color: red;
+    border-radius: 20rem;
+    color: white;
+    padding: 0.5rem; }
+  .carritoAcciones .btnComprar {
+    background-color: green;
+    border-radius: 20rem;
+    color: white;
+    padding: 0.5rem;
+    margin-left: .5rem; }
+  .carritoAcciones .accionPrecioTotal {
+    display: flex;
+    justify-content: center;
+    align-items: center; }

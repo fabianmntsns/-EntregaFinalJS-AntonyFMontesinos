@@ -101,13 +101,28 @@
 .carritoAcciones{
     display: flex;
     justify-content: center;
-    div{
-        background-color: whitesmoke;
-        button{
+    column-gap: 2rem;
+        .vaciarCarrito{
+            background-color: red;
+            border-radius: 20rem;
+            color: white;
             padding: 0.5rem;
+            
         }
-    }
 
+        .btnComprar{
+            background-color: green;
+            border-radius: 20rem;
+            color: white;
+            padding: 0.5rem;  
+            margin-left: .5rem;  
+        }
+
+        .accionPrecioTotal{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
 
 }

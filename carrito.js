@@ -66,6 +66,7 @@ cargarProductosEnElCarrito ();
 
 
 function botonesEliminarDelCarrito() {
+    
     btnEliminar = document.querySelectorAll(".carritoProductoEliminar")
 
     btnEliminar.forEach(btn => {
@@ -75,6 +76,21 @@ function botonesEliminarDelCarrito() {
 }
 
 function eliminarProdCarrito(e){
+    Toastify({
+        text: "Producto Eliminado",
+        duration: 2000,
+        close: true,
+        gravity: "top", 
+        position: "center", 
+        stopOnFocus: true,
+        style: {
+          background: "rgb(252, 11, 11)",
+        },
+        offset: {
+            y: "2rem" 
+          },
+        onClick: function(){}
+      }).showToast();
     let idBtn = e.currentTarget.id;
     const index = carritoDeCompras.findIndex(producto => producto.id === idBtn);
     carritoDeCompras.splice(index, 1);
@@ -86,21 +102,42 @@ function eliminarProdCarrito(e){
 btnVaciarCarrito.addEventListener("click", vaciarCarritoDeCompras)
 function vaciarCarritoDeCompras () {
 
-    carritoDeCompras.length = 0;
-    localStorage.setItem("productos-en-el-carrito" , JSON.stringify(carritoDeCompras));
-    cargarProductosEnElCarrito ();
-
+    Swal.fire({
+        title: '¿Estás seguro?',
+        icon: 'info',
+        html:
+          'Tu carrito quedará vacio',
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: 'Sí',
+        cancelButtonText:'Seguir comprando',
+      }) .then((result) => {
+        if (result.isConfirmed) {
+            carritoDeCompras.length = 0;
+            localStorage.setItem("productos-en-el-carrito" , JSON.stringify(carritoDeCompras));
+            cargarProductosEnElCarrito ();
+        } 
+      })
 }
 
 
 function totalCompra (){
     const totalParaPagar = carritoDeCompras.reduce((acc, producto) => acc +  (producto.precio * producto.cantidad), 0)
-    precioTotal.innerText = `$${totalParaPagar}`;
+    precioTotal.innerText = `Total a pagar: $${totalParaPagar}`;
 }
 
 
 btnCompraRealizada.addEventListener("click", btnComprar)
 function btnComprar () {
+    Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Tu compra ha sido realizada',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      
 
     carritoDeCompras.length = 0;
     localStorage.setItem("productos-en-el-carrito" , JSON.stringify(carritoDeCompras));
