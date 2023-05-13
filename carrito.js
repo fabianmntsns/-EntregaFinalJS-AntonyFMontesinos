@@ -9,9 +9,12 @@ let btnEliminar = document.querySelectorAll(".carritoProductoEliminar")
 const btnVaciarCarrito = document.querySelector("#vaciarCarrito");
 const btnTotalCompra = document.querySelector("#precioTotal");
 const btnCompraRealizada = document.querySelector("#btnComprar");
+const formulario = document.getElementById("formDatos");
+const nombreForm = document.querySelector("#nombreForm");
+const enviarForm = document.querySelector("#enviarForm");
 
 function cargarProductosEnElCarrito (){
-
+  
     if (carritoDeCompras && carritoDeCompras.length > 0){
     
         boxCarritoVacio.classList.add("disabled");
@@ -62,7 +65,7 @@ function cargarProductosEnElCarrito (){
     totalCompra();
 }
 
-cargarProductosEnElCarrito ();
+cargarProductosEnElCarrito (); 
 
 
 function botonesEliminarDelCarrito() {
@@ -127,24 +130,49 @@ function totalCompra (){
     precioTotal.innerText = `Total a pagar: $${totalParaPagar}`;
 }
 
+// continuar codigo desde aqui, buscar la manera de que cuandi el usuario de click en finalizar comprar tenga q rellenar los datos si o si 
 
 btnCompraRealizada.addEventListener("click", btnComprar)
+
 function btnComprar () {
-    Swal.fire({
-        position: 'top-center',
-        icon: 'success',
-        title: 'Tu compra ha sido realizada',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      
 
-    carritoDeCompras.length = 0;
-    localStorage.setItem("productos-en-el-carrito" , JSON.stringify(carritoDeCompras));
-   
-    boxCarritoVacio.classList.add("disabled");
-    boxCarritoProductos.classList.add("disabled");
-    boxCarritoAcciones.classList.add("disabled");
-    boxCompraConfirmada.classList.remove("disabled");
+  Swal.fire({
+    title: `Completa tus datos`,
+    html: formulario,
+    confirmButtonText: 'Finalizar compra',
+    
+}).then((result) => {
+  if (result.value == true && formulario.nombre.value !== "") {
+
+            Swal.fire(
+            'Gracias por tu compra',
+            'En pocos minutos nos contactaremos contigo!',
+            'success'
+            
+          )
+          boxCarritoProductos.classList.add("disabled");
+          boxCarritoVacio.classList.remove("disabled");
+          
+  } else{
+    Swal.fire(
+      'Datos incompletos',
+      'Debes completar los datos para continuar!',
+      'warning'
+    )
+    boxCarritoAcciones.classList.remove("disabled");
+  }
+  })
+
+  formulario.addEventListener("submit", enviarForm)
+
+  formulario.classList.remove("disabled"); 
+
+  carritoDeCompras.length = 0;
+  localStorage.setItem("productos-en-el-carrito" , JSON.stringify(carritoDeCompras));
+
+  boxCarritoVacio.classList.add("disabled");
+ // boxCarritoProductos.classList.add("disabled");
+  boxCarritoAcciones.classList.add("disabled"); 
+  //boxCompraConfirmada.classList.remove("disabled"); 
+
 }
-
