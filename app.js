@@ -41,12 +41,10 @@ actualizarEstadoBotones();
 
 
 botonesSeccion.forEach(boton => {
-    // creamos un evento click que nos permita seleccionar la categoria de productos que queremos ver  
-    boton.addEventListener("click", (e)=>{ 
-        // hacemos un if else con dos objetivos 
-        //1-> mostrar los productos segun la categoria al clickear 
-        //2-> cambiar el nombre del titulo al cambiar de categoria 
-        if (e.currentTarget.id != "todos") { 
+    boton.addEventListener("click", (e) => {
+      const productosSeccion = (e.currentTarget.id != "todos") 
+
+      /*    if (e.currentTarget.id != "todos") { 
         const tituloCategoria = productos.find(producto => producto.categoria.id === e.currentTarget.id); 
         tituloSeccion.innerText= tituloCategoria.categoria.nombre;
 
@@ -56,10 +54,17 @@ botonesSeccion.forEach(boton => {
         else {
             tituloSeccion.innerText = "Todos los productos"; 
             cargarProductos(productos);
-        }
-
-    })
-})
+        } */
+        ? productos.filter(producto => producto.categoria.id === e.currentTarget.id) 
+        : productos;
+  
+      tituloSeccion.innerText = (e.currentTarget.id != "todos") 
+        ? productos.find(producto => producto.categoria.id === e.currentTarget.id).categoria.nombre 
+        : "Todos los productos";
+  
+      cargarProductos(productosSeccion);   
+    });
+  });
 
 // agregar los productos al carrito desde aqui
 
@@ -76,13 +81,16 @@ let carritoDeCompras;
 
 let carritoDeComprasLS = localStorage.getItem("productos-en-el-carrito");
 
-if(carritoDeComprasLS){
+/*if(carritoDeComprasLS){
     carritoDeCompras = JSON.parse(carritoDeComprasLS);
     // traemos la función de actCantProdCarrito para actualizar la el numero de productos que tenemos elegidos en la página ppal
     actCantProdCarrito()
 } else {
     carritoDeCompras = [];
-}
+} */
+
+carritoDeCompras = carritoDeComprasLS ? JSON.parse(carritoDeComprasLS) : [];
+actCantProdCarrito();
 
 
 // creamos la funcion
@@ -106,14 +114,19 @@ function agregarProductoAlCarrito(e) {
     const idBtn = e.currentTarget.id;
     const productoAgregadoAlCarrito = productos.find(producto => producto.id === idBtn);
 
-    if(carritoDeCompras.some(producto => producto.id === idBtn)){ 
+   /* if(carritoDeCompras.some(producto => producto.id === idBtn)){ 
         const index = carritoDeCompras.findIndex(producto => producto.id === idBtn);
         carritoDeCompras[index].cantidad++;
 
     } else {
         productoAgregadoAlCarrito.cantidad = 1;
         carritoDeCompras.push(productoAgregadoAlCarrito); // push para que los productos se guarden en el array de carritoDeCompras 
-    }
+    }*/
+    carritoDeCompras.some(producto => producto.id === idBtn) ?
+    (carritoDeCompras[carritoDeCompras.findIndex(producto => producto.id === idBtn)].cantidad++, null) :
+    (productoAgregadoAlCarrito.cantidad = 1, carritoDeCompras.push(productoAgregadoAlCarrito), null);
+
+
     actCantProdCarrito();
     // LocalStorage
     localStorage.setItem("productos-en-el-carrito", JSON.stringify(carritoDeCompras));
