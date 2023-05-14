@@ -12,8 +12,8 @@ const contenedorProductos = document.querySelector("#contenedorCards");
 const botonesSeccion = document.querySelectorAll(".botonSeccion");
 const tituloSeccion = document.querySelector("#tituloMain");
 let btnAgregar = document.querySelectorAll(".buyProd")
-const cantidadProductosEnCarrito = document.querySelector("#num")
-
+const cantidadProductosEnCarrito = document.querySelector("#num");
+const input = document.querySelector('input');
 
 // realizamos la funcion cargarProductos para manipular el DOM mediante lo que se cargó previamente en el Array de productos
 
@@ -126,3 +126,65 @@ function actCantProdCarrito(){
     let nuevaCantidadProductosEnCarrito = carritoDeCompras.reduce((acc, producto) => acc + producto.cantidad, 0);
     cantidadProductosEnCarrito.innerText = nuevaCantidadProductosEnCarrito;
 }
+
+// buscador
+
+
+input.addEventListener('input', buscarProductos);
+
+function buscarProductos(e) {
+    value = e.srcElement.value.toLowerCase()
+    const productosSeccion = productos.filter(producto => producto.titulo.slice (0,value.length).toLowerCase() === value);
+    cargarProductos(productosSeccion)
+}
+
+
+// clase constructura con alerta de sweet alert para dar saludo de bienvenida al usuario
+class Saludo {
+    constructor(nombre) {
+      this.nombre = nombre;
+    }
+  
+    saludar() {
+      if (this.nombre !== '') {
+        swal({
+          title: `¡Bienvenido, ${this.nombre}!`,
+          text: 'Gracias por visitar nuestra página',
+          icon: 'success',
+          button: 'Aceptar',
+          closeOnClickOutside: false
+        });
+      } else {
+        this.pedirNombre();
+      }
+    }
+  
+    pedirNombre() {
+      swal({
+        content: {
+          element: "input",
+          attributes: {
+            id: "swal-input",
+            placeholder: "Ingresa tu nombre",
+            type: "text",
+          },
+        },
+        buttons: {
+          confirm: "Aceptar",
+        },
+        closeOnClickOutside: false
+      }).then((value) => {
+        const nombreUsuario = value;
+        if (nombreUsuario !== null && nombreUsuario !== undefined && nombreUsuario !== '') {
+          const saludo = new Saludo(nombreUsuario);
+          saludo.saludar();
+        } else {
+          this.pedirNombre();
+        }
+      });
+    }
+  }
+  
+  const saludo = new Saludo('');
+  saludo.pedirNombre();
+  
