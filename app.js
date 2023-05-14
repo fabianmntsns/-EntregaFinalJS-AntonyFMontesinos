@@ -133,6 +133,7 @@ function actCantProdCarrito(){
 input.addEventListener('input', buscarProductos);
 
 function buscarProductos(e) {
+    console.log(buscarProductos)
     value = e.srcElement.value.toLowerCase()
     const productosSeccion = productos.filter(producto => producto.titulo.slice (0,value.length).toLowerCase() === value);
     cargarProductos(productosSeccion)
@@ -147,12 +148,12 @@ class Saludo {
   
     saludar() {
       if (this.nombre !== '') {
-        swal({
+        Swal.fire({
           title: `¡Bienvenido, ${this.nombre}!`,
           text: 'Gracias por visitar nuestra página',
           icon: 'success',
-          button: 'Aceptar',
-          closeOnClickOutside: false
+          confirmButtonText: 'Aceptar',
+          allowOutsideClick: false
         });
       } else {
         this.pedirNombre();
@@ -160,22 +161,24 @@ class Saludo {
     }
   
     pedirNombre() {
-      swal({
-        content: {
-          element: "input",
-          attributes: {
-            id: "swal-input",
-            placeholder: "Ingresa tu nombre",
-            type: "text",
-          },
+      Swal.fire({
+        title: 'Ingresa tu nombre',
+        input: 'text',
+        inputPlaceholder: 'Escribe tu nombre aquí',
+        inputAttributes: {
+          autocapitalize: 'off'
         },
-        buttons: {
-          confirm: "Aceptar",
-        },
-        closeOnClickOutside: false
-      }).then((value) => {
-        const nombreUsuario = value;
-        if (nombreUsuario !== null && nombreUsuario !== undefined && nombreUsuario !== '') {
+        showCancelButton: false,
+        confirmButtonText: 'Aceptar',
+        allowOutsideClick: false,
+        inputValidator: (value) => {
+          if (!value) {
+            return 'Debes ingresar tu nombre';
+          }
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const nombreUsuario = result.value;
           const saludo = new Saludo(nombreUsuario);
           saludo.saludar();
         } else {
@@ -187,4 +190,3 @@ class Saludo {
   
   const saludo = new Saludo('');
   saludo.pedirNombre();
-  

@@ -13,6 +13,7 @@ const formulario = document.getElementById("formDatos");
 const nombreForm = document.querySelector("#nombreForm");
 const emailForm = document.querySelector("#emailForm");
 const enviarForm = document.querySelector("#enviarForm");
+const btnRegresar = document.querySelector("#btnBack");
 
 function cargarProductosEnElCarrito (){
   
@@ -146,7 +147,7 @@ function btnComprar () {
   if (result.value == true && formulario.nombre.value !== "") {
 
             Swal.fire(
-            'Gracias por tu compra ${}',
+            'Gracias por tu compra',
             'En pocos minutos nos contactaremos contigo!',
             'success'
             
@@ -173,8 +174,7 @@ function btnComprar () {
   localStorage.setItem("productos-en-el-carrito" , JSON.stringify(carritoDeCompras));
 
   boxCarritoVacio.classList.add("disabled");
- // boxCarritoProductos.classList.add("disabled");
   boxCarritoAcciones.classList.add("disabled"); 
-  //boxCompraConfirmada.classList.remove("disabled"); 
+
 
 }
