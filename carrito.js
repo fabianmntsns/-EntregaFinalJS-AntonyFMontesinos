@@ -132,7 +132,6 @@ function totalCompra (){
     precioTotal.innerText = `Total a pagar: $${totalParaPagar}`;
 }
 
-// continuar codigo desde aqui, buscar la manera de que cuandi el usuario de click en finalizar comprar tenga q rellenar los datos si o si 
 
 btnCompraRealizada.addEventListener("click", btnComprar)
 
