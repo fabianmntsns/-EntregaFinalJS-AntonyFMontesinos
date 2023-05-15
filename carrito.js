@@ -15,6 +15,7 @@ const emailForm = document.querySelector("#emailForm");
 const enviarForm = document.querySelector("#enviarForm");
 const btnRegresar = document.querySelector("#btnBack");
 
+
 function cargarProductosEnElCarrito (){
   
     if (carritoDeCompras && carritoDeCompras.length > 0){

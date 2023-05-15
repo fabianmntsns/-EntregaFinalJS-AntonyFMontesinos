@@ -13,7 +13,8 @@ const botonesSeccion = document.querySelectorAll(".botonSeccion");
 const tituloSeccion = document.querySelector("#tituloMain");
 let btnAgregar = document.querySelectorAll(".buyProd")
 const cantidadProductosEnCarrito = document.querySelector("#num");
-const input = document.querySelector('input');
+//const input = document.querySelector('input');
+const buscadorProd = document.querySelector('.inputForm');
 
 // realizamos la funcion cargarProductos para manipular el DOM mediante lo que se cargó previamente en el Array de productos
 
@@ -142,6 +143,15 @@ function actCantProdCarrito(){
 
 // buscador
 
+buscadorProd.addEventListener('input', buscarProductos);
+
+function buscarProductos(e) {
+    console.log(buscarProductos);
+    const value = e.srcElement.value.toLowerCase();
+    const productosSeccion = productos.filter(producto => producto.titulo.slice(0, value.length).toLowerCase() === value);
+    cargarProductos(productosSeccion);
+}
+/*
 
 input.addEventListener('input', buscarProductos);
 
@@ -150,7 +160,7 @@ function buscarProductos(e) {
     value = e.srcElement.value.toLowerCase()
     const productosSeccion = productos.filter(producto => producto.titulo.slice (0,value.length).toLowerCase() === value);
     cargarProductos(productosSeccion)
-}
+} */
 
 
 // clase constructura con alerta de sweet alert para dar saludo de bienvenida al usuario
