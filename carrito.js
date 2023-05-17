@@ -118,6 +118,7 @@ function vaciarCarritoDeCompras () {
         focusConfirm: false,
         confirmButtonText: 'Sí',
         cancelButtonText:'Seguir comprando',
+        allowOutsideClick: false,
       }) .then((result) => {
         if (result.isConfirmed) {
             carritoDeCompras.length = 0;
@@ -142,6 +143,7 @@ function btnComprar () {
     title: `Completa tus datos`,
     html: formulario,
     confirmButtonText: 'Finalizar compra',
+    allowOutsideClick: false,
     
 }).then((result) => {
   if (result.value == true && formulario.nombre.value !== "") {

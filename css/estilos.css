@@ -93,20 +93,31 @@ body {
         body .mainPpal .contenedorCards .prod .infoProd .buyProd:hover {
           background-color: #89909c; }
 
+footer div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem; }
+
+footer .logosPages {
+  padding-top: 1rem; }
+
+footer h4 {
+  text-align: center;
+  font-size: 1rem; }
+
 .bodyCarrito {
   background-color: whitesmoke; }
   .bodyCarrito header h1 {
     text-transform: uppercase; }
   .bodyCarrito header nav {
     background-color: silver; }
-    .bodyCarrito header nav div .menuIndex ul li {
-      margin-right: 6rem; }
-      .bodyCarrito header nav div .menuIndex ul li a {
-        text-decoration: none;
-        color: black; }
-      .bodyCarrito header nav div .menuIndex ul li .botonCarrito img {
-        width: 1.3rem;
-        height: 1.3rem; }
+    .bodyCarrito header nav div .menuIndex ul li a {
+      text-decoration: none;
+      color: black; }
+    .bodyCarrito header nav div .menuIndex ul li .botonCarrito img {
+      width: 1.3rem;
+      height: 1.3rem; }
 
 .mainPpal .boxCarrito {
   text-align: center; }
@@ -160,17 +171,29 @@ body {
   justify-content: center;
   column-gap: 2rem; }
   .carritoAcciones .vaciarCarrito {
-    background-color: red;
+    background-color: rgba(218, 97, 97, 0.74);
     border-radius: 20rem;
-    color: white;
     padding: 0.5rem; }
   .carritoAcciones .btnComprar {
-    background-color: green;
+    background-color: rgba(144, 214, 144, 0.719);
     border-radius: 20rem;
-    color: white;
     padding: 0.5rem;
     margin-left: .5rem; }
   .carritoAcciones .accionPrecioTotal {
     display: flex;
     justify-content: center;
     align-items: center; }
+
+@media screen and (max-width: 767px) {
+  .bodyCarrito header .navbar div .menuIndex {
+    width: 20rem;
+    display: flex;
+    justify-content: center; }
+    .bodyCarrito header .navbar div .menuIndex ul {
+      margin: auto; }
+      .bodyCarrito header .navbar div .menuIndex ul li {
+        margin-right: 0; }
+  .bodyCarrito .mainPpal .boxCarrito .carritoProducto {
+    display: flex;
+    flex-direction: column;
+    width: auto; } }
